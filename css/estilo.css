@@ -1,0 +1,467 @@
+/* =====================================================================
+   estilo.css — aparência de TODAS as páginas do site
+   ---------------------------------------------------------------------
+   Como este arquivo está organizado:
+   1. Cores e medidas (variáveis)  -> mude aqui para trocar o visual todo
+   2. Estilos gerais (body, títulos, textos, links)
+   3. Cabeçalho e menu
+   4. Conteúdo principal (cards, tabelas, caixas de exemplo e dicas)
+   5. Rodapé
+   6. Jogos e checklist
+   7. Telas pequenas (celular)
+
+   Usamos principalmente SELETORES DE ELEMENTO (body, h1, p, section...).
+   Só usamos "classe" (.nome) quando o elemento HTML sozinho não basta.
+   Cada classe usada está explicada com um comentário.
+   ===================================================================== */
+
+
+/* ---------- 1. VARIÁVEIS: cores e medidas ---------- */
+/* Uma variável é um "apelido" para um valor. Usamos assim: var(--nome) */
+:root {
+  --fundo: #f5f7fb;
+  --card: #ffffff;
+  --texto: #1e293b;
+  --texto-suave: #5b6b82;
+  --primaria: #4361ee;
+  --primaria-escura: #3249c9;
+  --primaria-clara: #e8edff;
+  --acento: #14a38b;
+  --acento-claro: #e3f7f3;
+  --erro: #b42318;
+  --erro-claro: #fdecea;
+  --certo: #1b7a43;
+  --certo-claro: #e8f6ee;
+  --atencao-claro: #fff6df;
+  --atencao-borda: #e5a50a;
+  --borda: #dbe2ee;
+  --raio: 14px;
+  --sombra: 0 2px 10px rgba(30, 41, 59, 0.07);
+  --largura: 980px;
+}
+
+
+/* ---------- 2. ESTILOS GERAIS ---------- */
+* {
+  box-sizing: border-box; /* faz largura e padding "caberem" direito nas caixas */
+}
+
+html {
+  scroll-behavior: smooth; /* rolagem suave ao clicar em links internos */
+  scroll-padding-top: 90px; /* o cabeçalho fixo não cobre o título ao rolar */
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+  color: #16213a;
+}
+
+h1 { font-size: 2.1rem; margin: 0 0 0.6rem; }
+h2 { font-size: 1.55rem; margin: 2.2rem 0 0.8rem; }
+h3 { font-size: 1.2rem; margin: 1.6rem 0 0.5rem; }
+
+p { margin: 0 0 1rem; }
+
+/* overflow-wrap: permite quebrar endereços (URLs) muito longos, para não criar rolagem lateral */
+a { color: var(--primaria-escura); overflow-wrap: anywhere; }
+a:hover { color: var(--primaria); }
+
+ul, ol { padding-left: 1.4rem; margin: 0 0 1rem; }
+li { margin-bottom: 0.35rem; }
+
+/* Foco visível para quem navega pelo teclado */
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--primaria);
+  outline-offset: 2px;
+}
+
+
+/* ---------- 3. CABEÇALHO E MENU ---------- */
+header {
+  position: sticky; /* fica "grudado" no topo ao rolar a página */
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.7rem 1.2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--borda);
+  backdrop-filter: blur(6px);
+}
+
+/* "header > a" = o link que é filho direto do header, ou seja, o nome do site */
+header > a {
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+  color: var(--primaria-escura);
+}
+
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+
+header nav a {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--texto);
+  font-size: 0.97rem;
+}
+
+header nav a:hover { background: var(--primaria-clara); }
+
+/* A página atual recebe aria-current no HTML; aqui damos destaque a ela */
+header nav a[aria-current] {
+  background: var(--primaria);
+  color: #ffffff;
+}
+
+/* O botão do menu só aparece no celular (veja a seção 7) */
+header button { display: none; }
+
+
+/* ---------- 4. CONTEÚDO PRINCIPAL ---------- */
+main {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 1.5rem 1.2rem 3rem;
+}
+
+/* Efeito simples de entrada: o conteúdo "sobe" suavemente */
+main > * {
+  animation: subir 0.5s ease both;
+}
+
+@keyframes subir {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Quem pediu menos movimento no sistema não vê animações */
+@media (prefers-reduced-motion: reduce) {
+  main > * { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Texto de abertura da página, logo abaixo do título */
+main > p:first-of-type {
+  font-size: 1.15rem;
+  color: var(--texto-suave);
+}
+
+/* Classe "destaque": bloco de abertura da página inicial */
+.destaque {
+  padding: 2rem 1.6rem;
+  margin-bottom: 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #e8edff 0%, #e3f7f3 100%);
+  border: 1px solid var(--borda);
+}
+
+/* Classe "grade": organiza vários cards lado a lado (e empilha no celular) */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+/* "article" é usado como CARD */
+article {
+  background: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.1rem 1.2rem;
+  box-shadow: var(--sombra);
+}
+
+article h3 { margin-top: 0; }
+article p:last-child, article ul:last-child { margin-bottom: 0; }
+
+.grade article { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.grade article:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(67, 97, 238, 0.15); }
+
+/* Índice interno da página e botões "Anterior / Próxima".
+   "main nav" = qualquer nav dentro do conteúdo principal */
+main nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+main nav a {
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  background: var(--card);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+main nav a:hover { background: var(--primaria-clara); }
+
+/* Classe "botao": faz um link parecer um botão */
+.botao, button {
+  display: inline-block;
+  padding: 0.65rem 1.3rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--primaria);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.botao:hover, button:hover { background: var(--primaria-escura); color: #ffffff; }
+
+/* ---- Exemplos errados e corrigidos ----
+   Classes "errado" e "certo": usadas em parágrafos de exemplo.
+   O texto "Inadequado:" / "Adequado:" é colocado automaticamente por ::before */
+.errado, .certo {
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border-left: 5px solid;
+}
+
+.errado { background: var(--erro-claro); border-color: var(--erro); }
+.certo  { background: var(--certo-claro); border-color: var(--certo); }
+
+.errado::before { content: "✗ Inadequado: "; font-weight: 700; color: var(--erro); }
+.certo::before  { content: "✓ Adequado: ";   font-weight: 700; color: var(--certo); }
+
+/* "aside" = caixa de dica ou curiosidade (azul claro) */
+aside {
+  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0;
+  border-radius: 12px;
+  background: var(--primaria-clara);
+  border-left: 5px solid var(--primaria);
+}
+
+aside p:last-child, aside ul:last-child { margin-bottom: 0; }
+
+/* Classe "atencao": deixa a caixa amarela, para avisos importantes */
+aside.atencao {
+  background: var(--atencao-claro);
+  border-left-color: var(--atencao-borda);
+}
+
+/* Tabelas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  font-size: 0.98rem;
+}
+
+th, td {
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid var(--borda);
+  vertical-align: top;
+}
+
+th { background: var(--primaria-clara); }
+
+/* Classe "tabela": caixa que permite rolar a tabela de lado no celular */
+.tabela {
+  overflow-x: auto;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  margin: 1rem 0 1.5rem;
+}
+
+/* Listas "Como evitar" */
+section > ul li::marker { color: var(--acento); }
+
+/* "details" = bloco que abre e fecha (usado em respostas e curiosidades) */
+details {
+  background: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  margin: 0.8rem 0;
+}
+
+summary { cursor: pointer; font-weight: 600; }
+details[open] summary { margin-bottom: 0.6rem; }
+
+code, kbd {
+  background: #eef1f7;
+  padding: 0.1rem 0.4rem;
+  border-radius: 6px;
+}
+
+progress {
+  width: 100%;
+  height: 14px;
+  accent-color: var(--acento);
+}
+
+
+/* ---------- 5. RODAPÉ ---------- */
+footer {
+  padding: 1.2rem;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+  background: #eef1f7;
+  border-top: 1px solid var(--borda);
+}
+
+footer p { margin: 0 0 0.25rem; }
+
+
+/* ---------- 6. JOGOS E CHECKLIST ---------- */
+
+/* Checklist da página "Dicas" (classe "checklist" na lista) */
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist li {
+  background: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+}
+
+.checklist label {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.checklist input {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-top: 0.25rem;
+  accent-color: var(--acento);
+  flex-shrink: 0;
+}
+
+/* Os jogos são montados pelo JavaScript (jogos.js).
+   Usamos id (#) aqui porque o JavaScript precisa "encontrar" essas áreas. */
+#painel-xp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem 1.2rem;
+  border-radius: var(--raio);
+  background: var(--primaria-clara);
+  border: 1px solid var(--borda);
+}
+
+#lista-jogos article { display: flex; flex-direction: column; gap: 0.4rem; }
+#lista-jogos article button { margin-top: auto; align-self: flex-start; }
+#lista-jogos article p { margin: 0; }
+
+#area-jogo, #resultado {
+  background: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.3rem;
+  box-shadow: var(--sombra);
+}
+
+#cabecalho-jogo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+#frase-jogo {
+  margin: 1rem 0;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  background: #f0f3fa;
+  border-left: 5px solid var(--primaria);
+  font-size: 1.12rem;
+}
+
+#opcoes-jogo {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+
+/* Botões de alternativa: ficam brancos com borda, não azuis */
+#opcoes-jogo button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border: 2px solid var(--borda);
+  background: #ffffff;
+  color: var(--texto);
+  font-weight: 500;
+}
+
+#opcoes-jogo button:hover:not(:disabled) { border-color: var(--primaria); background: var(--primaria-clara); }
+#opcoes-jogo button:disabled { cursor: default; }
+
+/* Classes aplicadas pelo JavaScript depois que o aluno responde */
+#opcoes-jogo button.opcao-certa  { border-color: var(--certo); background: var(--certo-claro); }
+#opcoes-jogo button.opcao-errada { border-color: var(--erro);  background: var(--erro-claro); }
+
+#feedback-jogo { margin: 1rem 0; }
+#feedback-jogo p { margin-bottom: 0.5rem; }
+
+#resultado h2 { margin-top: 0; }
+#resultado p, #resultado div { margin-bottom: 0.8rem; }
+
+/* Faz o atributo "hidden" sempre esconder o elemento */
+[hidden] { display: none !important; }
+
+
+/* ---------- 7. TELAS PEQUENAS (celular) ---------- */
+@media (max-width: 800px) {
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.35rem; }
+  body { font-size: 1rem; }
+
+  /* No celular, o menu fica escondido até clicar no botão "Menu" */
+  header button {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+  }
+
+  header nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  /* O JavaScript troca aria-expanded para "true" quando o menu abre */
+  header button[aria-expanded="true"] + nav { display: flex; }
+
+  header nav a { padding: 0.65rem 0.9rem; }
+
+  .destaque { padding: 1.4rem 1.1rem; }
+}

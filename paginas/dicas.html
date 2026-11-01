@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- dicas.html — Dicas gerais em formato de checklist interativo (o JavaScript está em principal.js) -->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dicas gerais para a redação — C1 na Prática</title>
+  <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+
+  <header>
+    <a href="../index.html">✍️ C1 na Prática</a>
+    <button type="button" aria-expanded="false" aria-label="Abrir ou fechar o menu">☰ Menu</button>
+    <nav aria-label="Menu principal">
+      <a href="../index.html">Início</a>
+      <a href="competencia1.html">Competência 1</a>
+      <a href="estrutura-sintatica.html">Bloco 1</a>
+      <a href="desvios.html">Bloco 2</a>
+      <a href="dicas.html" aria-current="page">Dicas</a>
+      <a href="avaliacao.html">Avaliação</a>
+      <a href="jogos.html">Jogos</a>
+      <a href="referencias.html">Referências</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Dicas gerais para a redação</h1>
+    <p>Use este checklist antes de entregar a redação. Marque cada item depois de revisar o seu texto. Suas marcações ficam salvas neste navegador.</p>
+
+    <!-- O id "checklist" é usado pelo principal.js para encontrar esta área -->
+    <section id="checklist">
+      <progress max="10" value="0">0 de 10</progress>
+      <p id="texto-checklist">0 de 10 itens revisados</p>
+
+      <ul class="checklist">
+        <li><label><input type="checkbox"> <span><strong>Não separei sujeito e verbo por vírgula.</strong> Exemplo a evitar: “Os jovens, enfrentam dificuldades.”</span></label></li>
+        <li><label><input type="checkbox"> <span><strong>Usei vírgula corretamente após conectivos deslocados.</strong> “Além disso, ...”; “O problema, entretanto, persiste.”</span></label></li>
+        <li><label><input type="checkbox"> <span><strong>Evitei repetir palavras.</strong> Usei pronomes ou sinônimos, sem trocar a palavra por um termo inadequado ao contexto.</span></label></li>
+        <li><label><input type="checkbox"> <span><strong>Pensei no sentido literal e no contexto das palavras.</strong> Se tenho dúvida do significado de uma palavra, uso outra que conheço bem.</span></label></li>
+        <li><label><input type="checkbox"> <span><strong>Evitei vocabulário excessivamente genérico</strong> (“coisa”, “negócio”, “todos”, “ninguém”, “algo”).</span></label></li>
+        <li><label><input type="checkbox"> <span><strong>Reli o texto depois de terminar.</strong> De preferência, em voz baixa, pois a leitura ajuda a perceber falhas.</span></label></li>
+        <li><label><input type="checkbox"> <span><strong>Revisei concordância, regência, pontuação e ortografia.</strong></span></label></li>
+        <li><label><input type="checkbox"> <span><strong>Verifiquei se todas as frases têm construção sintática adequada:</strong> sujeito, verbo e complementos; sem truncamentos nem justaposições.</span></label></li>
+        <li><label><input type="checkbox"> <span><strong>Evitei períodos excessivamente longos.</strong> Se a frase tem muitas ideias, dividi em dois períodos.</span></label></li>
+        <li><label><input type="checkbox"> <span><strong>Verifiquei se a linguagem está adequada ao gênero dissertativo-argumentativo:</strong> formal, impessoal, sem gírias e sem marcas de oralidade.</span></label></li>
+      </ul>
+
+      <p><button type="button" id="limpar-checklist">Limpar marcações</button></p>
+    </section>
+
+    <h2>Entenda melhor cada dica</h2>
+
+    <details>
+      <summary>Por que não separar sujeito e verbo por vírgula?</summary>
+      <p>Sujeito e verbo formam o “núcleo” da oração. Uma vírgula entre eles quebra essa ligação sem justificativa sintática. A exceção é quando há um termo intercalado entre vírgulas: “Os jovens, <em>em geral</em>, enfrentam dificuldades.” (aqui são duas vírgulas, que isolam o termo intercalado). Mais em <a href="gramatica.html#pontuacao">Pontuação</a>.</p>
+    </details>
+
+    <details>
+      <summary>Como pesquisar sinônimos sem errar?</summary>
+      <p>Sinônimos raramente são idênticos. Antes de trocar uma palavra, confira o significado em um dicionário e teste a nova palavra na frase. Exemplo: “discriminar” (tratar de forma desigual) e “descriminar” (tirar o caráter de crime) <em>não</em> são sinônimos. Se não tiver certeza, prefira a palavra que você conhece. Veja <a href="registro-formal.html#vocabulario">Vocabulário impreciso</a>.</p>
+    </details>
+
+    <details>
+      <summary>Como revisar o texto com método?</summary>
+      <p>Faça a revisão em “passadas”: (1) leia buscando períodos incompletos ou longos demais; (2) leia buscando verbos e seus sujeitos (concordância); (3) leia buscando preposições e crase (regência); (4) leia buscando vírgulas; (5) por último, confira ortografia e acentos das palavras de que tem dúvida.</p>
+    </details>
+
+    <details>
+      <summary>Em que ordem estudar?</summary>
+      <p>Comece pelo <a href="estrutura-sintatica.html">Bloco 1</a>, que trata da construção das frases. Depois estude a <a href="gramatica.html">gramática aplicada</a>, a <a href="convencoes-escrita.html">ortografia e as convenções</a> e o <a href="registro-formal.html">registro</a>. Pratique sempre na <a href="jogos.html">Central de Treinamento</a>.</p>
+    </details>
+
+    <nav aria-label="Navegação entre páginas">
+      <a href="registro-formal.html">← Registro formal</a>
+      <a href="avaliacao.html">Próxima: Como a C1 é avaliada →</a>
+    </nav>
+  </main>
+
+  <footer>
+    <p><strong>Projeto educacional desenvolvido por Elisa Silva Bueno</strong> — Monitora de Língua Portuguesa, IFSULDEMINAS, Campus Passos.</p>
+    <p>Orientadora: Prof.ª Dr.ª Carolina Cau Spósito · Estudante do 2º ano do Ensino Médio e do curso técnico de Informática.</p>
+    <p>Projeto desenvolvido com auxílio de Inteligência Artificial.</p>
+  </footer>
+
+  <script src="../js/principal.js"></script>
+</body>
+</html>

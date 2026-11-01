@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- jogos.html — Central de Treinamento. A estrutura está aqui; as perguntas e a lógica estão em ../js/jogos.js -->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Central de Treinamento — C1 na Prática</title>
+  <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+
+  <header>
+    <a href="../index.html">✍️ C1 na Prática</a>
+    <button type="button" aria-expanded="false" aria-label="Abrir ou fechar o menu">☰ Menu</button>
+    <nav aria-label="Menu principal">
+      <a href="../index.html">Início</a>
+      <a href="competencia1.html">Competência 1</a>
+      <a href="estrutura-sintatica.html">Bloco 1</a>
+      <a href="desvios.html">Bloco 2</a>
+      <a href="dicas.html">Dicas</a>
+      <a href="avaliacao.html">Avaliação</a>
+      <a href="jogos.html" aria-current="page">Jogos</a>
+      <a href="referencias.html">Referências</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>🎮 Central de Treinamento</h1>
+    <p>Pratique o que você aprendeu! Cada jogo tem perguntas de múltipla escolha em três níveis de dificuldade. Você vê na hora se acertou e lê uma explicação curta para aprender com cada resposta.</p>
+
+    <!-- Painel de XP. Os ids permitem que o jogos.js escreva os números aqui. -->
+    <div id="painel-xp">
+      <span>⭐ XP total: <strong id="xp-total">0</strong></span>
+      <span>🏅 <strong id="nivel-jogador">Iniciante</strong></span>
+      <span>✅ Jogos concluídos: <strong id="jogos-concluidos">0 de 6</strong></span>
+    </div>
+
+    <noscript>
+      <aside class="atencao"><p>Os jogos precisam de JavaScript. Ative-o no navegador para jogar.</p></aside>
+    </noscript>
+
+    <!-- LISTA DOS JOGOS (os cards são criados pelo jogos.js) -->
+    <section id="tela-lista">
+      <h2>Escolha um jogo</h2>
+      <div id="lista-jogos" class="grade"></div>
+      <aside>
+        <p><strong>Como funciona o XP:</strong> perguntas fáceis valem 10 XP, médias 15 XP e difíceis 20 XP. Se você jogar de novo e melhorar, o XP do jogo é atualizado para a sua melhor pontuação. O progresso fica salvo neste navegador.</p>
+      </aside>
+    </section>
+
+    <!-- ÁREA DO JOGO (aparece quando o aluno escolhe um jogo) -->
+    <section id="area-jogo" hidden>
+      <div id="cabecalho-jogo">
+        <span id="nome-jogo"></span>
+        <span id="contador-jogo"></span>
+        <span id="xp-jogo"></span>
+      </div>
+      <progress id="progresso-jogo" max="1" value="0">0%</progress>
+
+      <h2 id="enunciado-jogo" tabindex="-1"></h2>
+      <p id="frase-jogo"></p>
+      <div id="opcoes-jogo"></div>
+
+      <!-- aria-live faz o leitor de tela anunciar o feedback -->
+      <div id="feedback-jogo" aria-live="polite"></div>
+
+      <p>
+        <button type="button" id="botao-proxima" hidden>Próxima pergunta →</button>
+        <button type="button" id="botao-sair">Sair do jogo</button>
+      </p>
+    </section>
+
+    <!-- RESULTADO FINAL -->
+    <section id="resultado" hidden>
+      <h2 id="titulo-resultado">Resultado</h2>
+      <p id="texto-resultado"></p>
+      <p id="detalhe-resultado"></p>
+      <p>
+        <button type="button" id="botao-repetir">Jogar novamente</button>
+        <button type="button" id="botao-voltar">Escolher outro jogo</button>
+      </p>
+    </section>
+
+    <nav aria-label="Navegação entre páginas">
+      <a href="avaliacao.html">← Como a C1 é avaliada</a>
+      <a href="referencias.html">Próxima: Referências →</a>
+    </nav>
+  </main>
+
+  <footer>
+    <p><strong>Projeto educacional desenvolvido por Elisa Silva Bueno</strong> — Monitora de Língua Portuguesa, IFSULDEMINAS, Campus Passos.</p>
+    <p>Orientadora: Prof.ª Dr.ª Carolina Cau Spósito · Estudante do 2º ano do Ensino Médio e do curso técnico de Informática.</p>
+    <p>Projeto desenvolvido com auxílio de Inteligência Artificial.</p>
+  </footer>
+
+  <!-- A ordem importa: principal.js (funções de apoio) vem ANTES de jogos.js -->
+  <script src="../js/principal.js"></script>
+  <script src="../js/jogos.js"></script>
+</body>
+</html>
